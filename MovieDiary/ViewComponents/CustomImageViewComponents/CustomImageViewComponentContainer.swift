@@ -10,7 +10,6 @@ class CustomImageViewComponentContainer: GenericBaseView<CustomImageViewComponen
         temp.clipsToBounds = true
         temp.layer.cornerRadius = 8
         temp.contentMode = .scaleAspectFill
-       
         return temp
     }()
     
@@ -38,5 +37,4 @@ class CustomImageViewComponentContainer: GenericBaseView<CustomImageViewComponen
         customImageView.setData(componentData: data)
         customImageView.contentMode = data.contentMode
     }
-    
 }

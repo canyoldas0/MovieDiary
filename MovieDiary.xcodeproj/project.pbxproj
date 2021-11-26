@@ -21,6 +21,9 @@
 		1E9C31082751032900525DB9 /* CustomImageViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C31042751032900525DB9 /* CustomImageViewComponent.swift */; };
 		1E9C31092751032900525DB9 /* CustomImageLoadingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C31052751032900525DB9 /* CustomImageLoadingType.swift */; };
 		1E9C310B2751037F00525DB9 /* TopCollectionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C310A2751037F00525DB9 /* TopCollectionViewData.swift */; };
+		1E9C310D275105AF00525DB9 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C310C275105AF00525DB9 /* TopCollectionViewCell.swift */; };
+		1E9C310F2751069400525DB9 /* ItemProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C310E2751069400525DB9 /* ItemProviderProtocol.swift */; };
+		1E9C31122751074600525DB9 /* MainVM+ItemProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C31112751074600525DB9 /* MainVM+ItemProviderProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		1E9C31042751032900525DB9 /* CustomImageViewComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageViewComponent.swift; sourceTree = "<group>"; };
 		1E9C31052751032900525DB9 /* CustomImageLoadingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageLoadingType.swift; sourceTree = "<group>"; };
 		1E9C310A2751037F00525DB9 /* TopCollectionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewData.swift; sourceTree = "<group>"; };
+		1E9C310C275105AF00525DB9 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
+		1E9C310E2751069400525DB9 /* ItemProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProviderProtocol.swift; sourceTree = "<group>"; };
+		1E9C31112751074600525DB9 /* MainVM+ItemProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVM+ItemProviderProtocol.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		1E35B2A22750FBDF00039C97 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1E9C31102751072A00525DB9 /* Extensions */,
 				1E35B2A32750FBE500039C97 /* MainViewModel.swift */,
 				1E35B2A82750FC1000039C97 /* MainViewController.swift */,
 				1E35B2AA2750FC3100039C97 /* MainViewBuilder.swift */,
@@ -123,6 +130,8 @@
 			children = (
 				1E9C30FE275102E300525DB9 /* TopCollectionView.swift */,
 				1E9C310A2751037F00525DB9 /* TopCollectionViewData.swift */,
+				1E9C310C275105AF00525DB9 /* TopCollectionViewCell.swift */,
+				1E9C310E2751069400525DB9 /* ItemProviderProtocol.swift */,
 			);
 			path = TopCollectionViewComponents;
 			sourceTree = "<group>";
@@ -136,6 +145,14 @@
 				1E9C31032751032900525DB9 /* CustomImageViewComponentData.swift */,
 			);
 			path = CustomImageViewComponents;
+			sourceTree = "<group>";
+		};
+		1E9C31102751072A00525DB9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E9C31112751074600525DB9 /* MainVM+ItemProviderProtocol.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9C310D275105AF00525DB9 /* TopCollectionViewCell.swift in Sources */,
+				1E9C31122751074600525DB9 /* MainVM+ItemProviderProtocol.swift in Sources */,
 				1E35B2A92750FC1000039C97 /* MainViewController.swift in Sources */,
 				1E35B28E2750FBA200039C97 /* AppDelegate.swift in Sources */,
 				1E9C30FF275102E300525DB9 /* TopCollectionView.swift in Sources */,
@@ -225,6 +244,7 @@
 				1E35B2A42750FBE500039C97 /* MainViewModel.swift in Sources */,
 				1E35B2AB2750FC3100039C97 /* MainViewBuilder.swift in Sources */,
 				1E9C31072751032900525DB9 /* CustomImageViewComponentData.swift in Sources */,
+				1E9C310F2751069400525DB9 /* ItemProviderProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
