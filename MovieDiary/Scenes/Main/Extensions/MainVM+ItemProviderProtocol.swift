@@ -15,12 +15,11 @@ extension MainViewModel: ItemProviderProtocol {
     }
     
     func askNumberOfItem(in section: Int) -> Int {
-        return 0
+        return 4
     }
     
     func askData(at index: Int) -> GenericDataProtocol? {
-        return nil
+        return dataFormatter.getItem(at: index)
     }
-    
-    
+
 }

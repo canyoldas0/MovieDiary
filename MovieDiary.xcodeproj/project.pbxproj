@@ -24,6 +24,7 @@
 		1E9C310D275105AF00525DB9 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C310C275105AF00525DB9 /* TopCollectionViewCell.swift */; };
 		1E9C310F2751069400525DB9 /* ItemProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C310E2751069400525DB9 /* ItemProviderProtocol.swift */; };
 		1E9C31122751074600525DB9 /* MainVM+ItemProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C31112751074600525DB9 /* MainVM+ItemProviderProtocol.swift */; };
+		1E9C31142751270800525DB9 /* MainViewDataFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C31132751270800525DB9 /* MainViewDataFormatter+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		1E9C310C275105AF00525DB9 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 		1E9C310E2751069400525DB9 /* ItemProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProviderProtocol.swift; sourceTree = "<group>"; };
 		1E9C31112751074600525DB9 /* MainVM+ItemProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVM+ItemProviderProtocol.swift"; sourceTree = "<group>"; };
+		1E9C31132751270800525DB9 /* MainViewDataFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewDataFormatter+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				1E35B2A32750FBE500039C97 /* MainViewModel.swift */,
 				1E35B2A82750FC1000039C97 /* MainViewController.swift */,
 				1E35B2AA2750FC3100039C97 /* MainViewBuilder.swift */,
+				1E9C31132751270800525DB9 /* MainViewDataFormatter+Extension.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				1E35B2AB2750FC3100039C97 /* MainViewBuilder.swift in Sources */,
 				1E9C31072751032900525DB9 /* CustomImageViewComponentData.swift in Sources */,
 				1E9C310F2751069400525DB9 /* ItemProviderProtocol.swift in Sources */,
+				1E9C31142751270800525DB9 /* MainViewDataFormatter+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

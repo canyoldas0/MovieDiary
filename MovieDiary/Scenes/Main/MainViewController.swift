@@ -10,7 +10,27 @@ import BaseModules
 
 class MainViewController: BaseViewController<MainViewModel> {
     
+    var topCollectionView : TopCollectionView!
+    
     override func prepareViewControllerSetup() {
-        view.backgroundColor = .green
+        addViewComponents()
+        view.backgroundColor = .white
+        
+    }
+    
+    private func addViewComponents() {
+        topCollectionView = TopCollectionView()
+        topCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        topCollectionView.delegate = viewModel
+        view.addSubview(topCollectionView)
+        
+        NSLayoutConstraint.activate([
+        
+            topCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            topCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topCollectionView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        
     }
 }

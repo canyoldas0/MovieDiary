@@ -9,4 +9,10 @@ import Foundation
 
 class MainViewModel {
     
+    var dataFormatter: MainViewDataFormatterProtocol!
+    
+    init(dataFormatter: MainViewDataFormatterProtocol) {
+        self.dataFormatter = dataFormatter
+    }
+    
 }

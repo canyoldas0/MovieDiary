@@ -10,7 +10,9 @@ import UIKit
 class MainViewBuilder {
     
     class func build() -> MainViewController {
-        let viewModel = MainViewModel()
+        
+        let dataFormatter = MainViewDataFormatter()
+        let viewModel = MainViewModel(dataFormatter: dataFormatter)
         let viewController = MainViewController(viewModel: viewModel)
         return viewController
     }
