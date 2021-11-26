@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BaseModules",
+        "repositoryURL": "https://github.com/canyoldas0/BaseModules.git",
+        "state": {
+          "branch": "main",
+          "revision": "9fcce537fec13fc967bf9d075a1ad73db5554a48",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
