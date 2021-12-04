@@ -11,30 +11,45 @@ import BaseModules
 
 protocol MainViewDataFormatterProtocol {
     
+    func setData(with response: MovieListDataResponse)
     func getItem(at index: Int) -> GenericDataProtocol?
     func getCount() -> Int
     func getNumberOfSection() -> Int
-    func getNumbeOfItem(in section: Int) -> Int
+    func getNumberOfItem(in section: Int) -> Int
+    func getImageUrl(at index: Int) -> String
 }
 
 
 class MainViewDataFormatter: MainViewDataFormatterProtocol {
     
+    private var componentData : MovieListDataResponse?
+    private var list : [MovieResult] = [MovieResult]()
+    
+    func setData(with response: MovieListDataResponse) {
+        self.componentData = response
+        self.list.append(contentsOf: response.results)
+        print(list.count)
+    }
+    
     func getItem(at index: Int) -> GenericDataProtocol? {
         
-        return CustomImageViewComponentData(imageUrl: "https://picsum.photos/200/300")
+        return CustomImageViewComponentData(imageUrl: getImageUrl(at: index))
+    }
+    
+    func getImageUrl(at index: Int) -> String {
+        return list[index].backdropURL
     }
     
     func getCount() -> Int {
-        return 4
+        return list.count
     }
     
     func getNumberOfSection() -> Int {
         return 1
     }
     
-    func getNumbeOfItem(in section: Int) -> Int {
-        return 4
+    func getNumberOfItem(in section: Int) -> Int {
+        return list.count
     }
 
 }

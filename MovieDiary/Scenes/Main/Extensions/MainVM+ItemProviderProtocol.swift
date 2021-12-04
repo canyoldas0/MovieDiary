@@ -15,7 +15,7 @@ extension MainViewModel: ItemProviderProtocol {
     }
     
     func askNumberOfItem(in section: Int) -> Int {
-        return 4
+        return dataFormatter.getNumberOfItem(in: section)
     }
     
     func askData(at index: Int) -> GenericDataProtocol? {

@@ -46,6 +46,12 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
         ])
         
     }
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionComponent.reloadData()
+        }
+    }
 }
 
 extension TopCollectionView: UICollectionViewDelegate,UICollectionViewDataSource {

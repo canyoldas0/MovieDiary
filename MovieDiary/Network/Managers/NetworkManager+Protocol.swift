@@ -8,14 +8,14 @@
 import Foundation
 import Network
 
-protocol NetworkManagerProtocol {
+ protocol NetworkManagerProtocol {
     
-    func createRequest<R: Codable>(urlRequest: URLRequest, completion: @escaping (Result<R,Error>) -> Void)
+    func createRequest<R: Codable>(urlRequest: URLRequest, completion: @escaping (Result<R, ErrorResponse>) -> Void)
 }
 
-public class NetworkManager: NetworkManagerProtocol {
+ class NetworkManager: NetworkManagerProtocol {
     
-    public static let shared = NetworkManager()
+    static let shared = NetworkManager()
     
     private let session: URLSession
     private var jsonDecoder = JSONDecoder()
@@ -28,7 +28,7 @@ public class NetworkManager: NetworkManagerProtocol {
         self.session = URLSession(configuration: config)
     }
     
-    func createRequest<R>(urlRequest: URLRequest, completion: @escaping (Result<R, Error>) -> Void) where R : Decodable, R : Encodable {
+    func createRequest<R>(urlRequest: URLRequest, completion: @escaping (Result<R, ErrorResponse>) -> Void) where R : Codable {
         
         session.dataTask(with: urlRequest) { (data, urlResponse, error) in
             self.dataTaskHandler(data, urlResponse, error, completion: completion)
@@ -36,11 +36,10 @@ public class NetworkManager: NetworkManagerProtocol {
     
     }
     
-    private func dataTaskHandler<R: Codable>(_ data: Data?, _ response: URLResponse?, _ error: Error?, completion: @escaping (Result<R, Error>) -> Void) {
+    private func dataTaskHandler<R: Codable>(_ data: Data?, _ response: URLResponse?, _ error: Error?, completion: @escaping (Result<R, ErrorResponse>) -> Void) {
         
-        if let e = error {
-            // Request Error
-            completion(.failure(e))
+        if error != nil {
+            completion(.failure(ErrorResponse(serverResponse: ServerResponse(returnMessage: error!.localizedDescription, returnCode: error!._code), apiConnectionErrorType: .serverError(error!._code))))
         }
         
         if let data = data {
@@ -48,8 +47,9 @@ public class NetworkManager: NetworkManagerProtocol {
                 let decodedData = try jsonDecoder.decode(R.self, from: data)
                 completion(.success(decodedData))
             } catch let error {
-                completion(.failure(error))
+                completion(.failure(ErrorResponse(serverResponse: ServerResponse(returnMessage: error.localizedDescription, returnCode: error._code), apiConnectionErrorType: .dataDecodedFailed(error.localizedDescription))))
             }
         }
     }
-}
+ }
+

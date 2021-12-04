@@ -15,6 +15,8 @@ class MainViewController: BaseViewController<MainViewModel> {
     override func prepareViewControllerSetup() {
         addViewComponents()
         view.backgroundColor = .white
+        viewModel.getData()
+        subscribeViewModelListeners()
         
     }
     
@@ -32,5 +34,23 @@ class MainViewController: BaseViewController<MainViewModel> {
             topCollectionView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
+    }
+    
+   
+    
+    private func subscribeViewModelListeners() {
+        
+        viewModel.subscribePopularList { state in
+            
+            switch state {
+            case .done:
+                self.topCollectionView.reloadCollectionView()
+            case .failure:
+                return
+            case .loading:
+                return
+                
+            }
+        }
     }
 }
