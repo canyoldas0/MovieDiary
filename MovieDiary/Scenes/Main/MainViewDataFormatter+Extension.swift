@@ -17,6 +17,7 @@ protocol MainViewDataFormatterProtocol {
     func getNumberOfSection() -> Int
     func getNumberOfItem(in section: Int) -> Int
     func getImageUrl(at index: Int) -> String
+    func getItemId(at index:Int) -> Int
 }
 
 
@@ -37,7 +38,7 @@ class MainViewDataFormatter: MainViewDataFormatterProtocol {
     }
     
     func getImageUrl(at index: Int) -> String {
-        return list[index].backdropURL
+        return list[index].posterURL
     }
     
     func getCount() -> Int {
@@ -50,6 +51,10 @@ class MainViewDataFormatter: MainViewDataFormatterProtocol {
     
     func getNumberOfItem(in section: Int) -> Int {
         return list.count
+    }
+    
+    func getItemId(at index: Int) -> Int {
+        return list[index].id ?? 0
     }
 
 }

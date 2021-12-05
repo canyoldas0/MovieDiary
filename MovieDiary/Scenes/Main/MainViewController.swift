@@ -31,7 +31,7 @@ class MainViewController: BaseViewController<MainViewModel> {
             topCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             topCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topCollectionView.heightAnchor.constraint(equalToConstant: 200)
+            topCollectionView.heightAnchor.constraint(equalToConstant: 300)
         ])
         
     }
@@ -52,5 +52,16 @@ class MainViewController: BaseViewController<MainViewModel> {
                 
             }
         }
+        
+        viewModel.subscribeDetailViewState { [weak self] data in
+            self?.fireDetailView(with: data)
+        }
+    }
+    
+    private func fireDetailView(with data: MovieDetailDataRequest) {
+        
+        let viewController = MovieDetailViewBuilder.build(with: data)
+        navigationController?.pushViewController(viewController, animated: true)
+        
     }
 }

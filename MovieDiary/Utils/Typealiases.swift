@@ -10,3 +10,5 @@ import Foundation
 typealias BaseUrl = EndpointHelper.BaseUrls
 typealias Path = EndpointHelper.Paths
 
+typealias MovieDetailRequestBlock = (MovieDetailDataRequest) -> Void
+

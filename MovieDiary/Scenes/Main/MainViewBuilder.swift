@@ -14,6 +14,7 @@ class MainViewBuilder {
         let dataFormatter = MainViewDataFormatter()
         let viewModel = MainViewModel(dataFormatter: dataFormatter)
         let viewController = MainViewController(viewModel: viewModel)
+        viewController.title = "Home"
         return viewController
     }
 }

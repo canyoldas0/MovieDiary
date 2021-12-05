@@ -15,16 +15,17 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
     private lazy var collectionComponent: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let temp = UICollectionView(frame: .zero, collectionViewLayout: layout)
         temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.backgroundColor = .black
         temp.delegate = self
         temp.dataSource = self
         temp.showsHorizontalScrollIndicator = false
         temp.register(TopCollectionViewCell.self, forCellWithReuseIdentifier: TopCollectionViewCell.identifier)
-//        temp.register(LoadingCellView.self, forCellWithReuseIdentifier: LoadingCellView.identifier)
+        //        temp.register(LoadingCellView.self, forCellWithReuseIdentifier: LoadingCellView.identifier)
         return temp
     }()
     
@@ -69,8 +70,21 @@ extension TopCollectionView: UICollectionViewDelegate,UICollectionViewDataSource
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.isUserInteractionEnabled = false
+        cell?.startTappedAnimation(with: { [weak self] finish in
+            if finish {
+                self?.delegate?.selectedItem(at: indexPath.row)
+                cell?.isUserInteractionEnabled = true
+            }
+        })
+    }
 }
+
+
+
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension TopCollectionView: UICollectionViewDelegateFlowLayout {

@@ -9,8 +9,10 @@ import Foundation
 
 class MainViewModel {
     
-    var dataFormatter: MainViewDataFormatterProtocol!
-    var popularMoviesState : PopularMoviesStateBlock?
+    let dataFormatter: MainViewDataFormatterProtocol!
+    
+    private var popularMoviesState : PopularMoviesStateBlock?
+    var detailViewState: MovieDetailRequestBlock?
     
     init(dataFormatter: MainViewDataFormatterProtocol) {
         self.dataFormatter = dataFormatter
@@ -18,6 +20,10 @@ class MainViewModel {
     
     func subscribePopularList(completion: @escaping PopularMoviesStateBlock) {
         popularMoviesState = completion
+    }
+    
+    func subscribeDetailViewState(with completion: @escaping MovieDetailRequestBlock) {
+        detailViewState = completion
     }
     
     

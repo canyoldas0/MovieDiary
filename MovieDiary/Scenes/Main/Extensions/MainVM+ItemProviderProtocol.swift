@@ -21,5 +21,9 @@ extension MainViewModel: ItemProviderProtocol {
     func askData(at index: Int) -> GenericDataProtocol? {
         return dataFormatter.getItem(at: index)
     }
+    
+    func selectedItem(at index: Int) {
+        detailViewState?(MovieDetailDataRequest(movie_id: dataFormatter.getItemId(at: index)))
+    }
 
 }

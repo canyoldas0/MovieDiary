@@ -36,6 +36,7 @@ class TopCollectionViewCell: BaseCollectionViewCell {
             imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
+
         ])
 
     }

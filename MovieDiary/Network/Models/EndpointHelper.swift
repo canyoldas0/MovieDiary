@@ -25,7 +25,7 @@ enum EndpointHelper {
             case .popularMovies:
                 return "movie/popular"
             case .detail:
-                return "lookup"
+                return "movie/"
             }
         }
         
