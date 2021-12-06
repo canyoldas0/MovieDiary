@@ -15,5 +15,7 @@ class MovieDetailDataRequest: Codable {
     init(movie_id: Int? = nil) {
         self.movie_id = movie_id
     }
+    
+    
 }
 

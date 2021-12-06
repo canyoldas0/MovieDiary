@@ -11,9 +11,9 @@ import Foundation
 class MovieDetailViewModel {
     
     private let requestData : MovieDetailDataRequest
-    private let dataFormatter: MovieDetailDataFormatterProtocol
+    let dataFormatter: MovieDetailDataFormatterProtocol
     
-    
+    private var viewState: MovieDetailViewStateBlock?
     
     init(formatter : MovieDetailDataFormatterProtocol,
          requestData : MovieDetailDataRequest) {
@@ -26,36 +26,38 @@ class MovieDetailViewModel {
         return self.requestData
     }
     
+    func subscribeViewState(with completion : @escaping MovieDetailViewStateBlock) {
+        viewState = completion
+    }
+    
     func getDetailData() {
         do {
             guard let urlRequest = try? MovieDetailDataProvider(request: getMovieDetailRequest()).returnUrlRequest() else { return }
-        //viewState?(.loading)
+            viewState?(.loading)
             fireApiCall(with:urlRequest, with: dataListener)
-            print(urlRequest)
         }
     }
     
-    private func fireApiCall(with request: URLRequest, with completion : @escaping (Result<MovieListDataResponse, ErrorResponse>) -> Void) {
+    private func fireApiCall(with request: URLRequest, with completion : @escaping (Result<MovieDetailDataResponse, ErrorResponse>) -> Void) {
         
         NetworkManager.shared.createRequest(urlRequest: request, completion: completion)
     }
     
-    private func apiCallHandler(from response: MovieListDataResponse) {
+    private func apiCallHandler(from response: MovieDetailDataResponse) {
         
-        //let data = response.results[0]
         dataFormatter.setDetailData(by: response)
         // We let VC know that we have data now.
-        //viewState?(.done)
+        viewState?(.done)
         
     }
     
-    private lazy var dataListener : (Result<MovieListDataResponse, ErrorResponse>) -> Void = { [weak self] result in
+    private lazy var dataListener : (Result<MovieDetailDataResponse, ErrorResponse>) -> Void = { [weak self] result in
         
         switch result {
-            case .failure(let error):
-                print("error : \(error)")
-            case .success(let response):
-                self?.apiCallHandler(from: response)
+        case .failure(let error):
+            return
+        case .success(let response):
+            self?.apiCallHandler(from: response)
         }
     }
     

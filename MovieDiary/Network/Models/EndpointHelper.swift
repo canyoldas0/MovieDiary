@@ -24,13 +24,13 @@ enum EndpointHelper {
             switch self {
             case .popularMovies:
                 return "movie/popular"
-            case .detail:
-                return "movie/"
+            case .detail(let id):
+                return "movie/\(id)"
             }
         }
         
         case popularMovies
-        case detail
+        case detail(Int)
 
     }
    

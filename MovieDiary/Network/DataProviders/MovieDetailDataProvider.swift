@@ -13,7 +13,7 @@ class MovieDetailDataProvider : ApiServiceProvider<MovieDetailDataRequest> {
     init(request : MovieDetailDataRequest) {
         super.init(method: .get,
                    baseUrl: BaseUrl.base.rawValue,
-                   path: Path.detail.value,
+                   path: Path.detail(request.movie_id ?? 0).value,
                    data: request)
     }
 }

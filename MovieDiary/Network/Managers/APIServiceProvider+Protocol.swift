@@ -30,7 +30,7 @@ class ApiServiceProvider<T: Codable>: URLRequestProtocol {
         self.data = data
     }
     
-    public func returnUrlRequest() throws -> URLRequest {
+     func returnUrlRequest() throws -> URLRequest {
         
         var url = try baseUrl.asURL()
         
