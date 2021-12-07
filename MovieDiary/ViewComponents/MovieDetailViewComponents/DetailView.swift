@@ -11,12 +11,31 @@ import BaseModules
 class DetailView: GenericBaseView<DetailViewData> {
     
     //MARK: - View Components
+    
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .vertical
+        temp.distribution = .equalSpacing
+        temp.spacing = 20
+        temp.alignment = .leading
+        return temp
+    }()
+    
     private lazy var imageContainer: CustomImageViewComponentContainer = {
         let temp = CustomImageViewComponentContainer()
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.layer.cornerRadius = 2
-        temp.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        temp.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        temp.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        temp.widthAnchor.constraint(equalToConstant: 140).isActive = true
         temp.clipsToBounds = true
         return temp
     }()
@@ -24,7 +43,20 @@ class DetailView: GenericBaseView<DetailViewData> {
     private lazy var movieNameLabel: UILabel = {
         let temp = UILabel()
         temp.textAlignment = .center
-        temp.text = " "
+        temp.text = "Movie Title "
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.font = MainFont.medium(16).value
+        temp.numberOfLines = 0
+        temp.lineBreakMode = .byWordWrapping
+        return temp
+    }()
+    
+    
+    
+    private lazy var categoryLabel: UILabel = {
+        let temp = UILabel()
+        temp.textAlignment = .center
+        temp.text = "Categories "
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.font = MainFont.medium(14).value
         temp.numberOfLines = 0
@@ -32,22 +64,63 @@ class DetailView: GenericBaseView<DetailViewData> {
         return temp
     }()
     
+    private lazy var scoreLabel: UILabel = {
+        let temp = UILabel()
+        temp.textAlignment = .center
+        temp.text = "7.4 / 10 "
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.font = MainFont.medium(14).value
+        temp.numberOfLines = 0
+        temp.lineBreakMode = .byWordWrapping
+        return temp
+    }()
+    
+    private lazy var releaseLabel: UILabel = {
+        let temp = UILabel()
+        temp.textAlignment = .center
+        temp.text = "Release date 121231231 "
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.font = MainFont.medium(14).value
+        temp.numberOfLines = 0
+        temp.lineBreakMode = .byWordWrapping
+        return temp
+    }()
+
+    private lazy var overviewLabel: UILabel = {
+        let temp = UILabel()
+        temp.textAlignment = .center
+        temp.text = "lorem ipsum "
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.font = MainFont.medium(14).value
+        temp.numberOfLines = 0
+        temp.lineBreakMode = .byWordWrapping
+        return temp
+    }()
+
+    //MARK: - StackViews
+
+    
     override func addMajorFields() {
         super.addMajorFields()
         addViewComponents()
     }
     
     private func addViewComponents() {
-        addSubview(imageContainer)
-        addSubview(movieNameLabel)
+        addSubview(containerView)
+        containerView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
         
-            imageContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageContainer.centerYAnchor.constraint(equalTo: centerYAnchor),
+            containerView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+
             
-            movieNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            movieNameLabel.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -30)
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
     
@@ -58,6 +131,5 @@ class DetailView: GenericBaseView<DetailViewData> {
         self.imageContainer.setData(data: data.imageData)
         self.movieNameLabel.text = data.movieName
     }
-    
-    
+
 }

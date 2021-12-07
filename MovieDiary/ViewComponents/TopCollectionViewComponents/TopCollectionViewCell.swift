@@ -15,8 +15,6 @@ class TopCollectionViewCell: BaseCollectionViewCell {
         let temp = CustomImageViewComponentContainer()
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.layer.cornerRadius = 10
-        temp.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        temp.widthAnchor.constraint(equalToConstant: 100).isActive = true
         temp.clipsToBounds = true
         return temp
     }()

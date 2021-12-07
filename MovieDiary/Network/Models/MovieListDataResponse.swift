@@ -21,7 +21,6 @@ struct MovieListDataResponse: Codable {
 
 // MARK: - Result
 struct MovieResult: Codable {
-    
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
@@ -60,7 +59,6 @@ struct MovieResult: Codable {
 
 enum OriginalLanguage: String, Codable {
     case en = "en"
-    case hi = "hi"
-    case pt = "pt"
+    case ja = "ja"
     case ru = "ru"
 }

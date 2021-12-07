@@ -13,6 +13,7 @@ class MovieDetailTableViewCell: BaseTableViewCell {
     lazy var containerView: UIView = {
         let temp = UIView()
         temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.clipsToBounds = true
         return temp
     }()
     
@@ -22,6 +23,7 @@ class MovieDetailTableViewCell: BaseTableViewCell {
         return temp
     }()
     
+
     override func addMajorViews() {
         super.addMajorViews()
         addViewComponents()

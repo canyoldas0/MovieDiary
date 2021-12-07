@@ -55,9 +55,7 @@ extension MovieDetailView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate?.askNumberOfItem(in: section) ?? 0
     }
-    
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let data = delegate?.askData(at: indexPath.row) else { fatalError("Couldnt get any data") }
@@ -70,6 +68,8 @@ extension MovieDetailView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
 }
