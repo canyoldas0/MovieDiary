@@ -1,4 +1,3 @@
-
 import UIKit
 
 class CustomImageViewComponent: UIImageView {
@@ -18,7 +17,7 @@ class CustomImageViewComponent: UIImageView {
     }
     
     private func fireImageDownloadingRequest(_ url: URL, _ componentData: CustomImageViewComponentData) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             if error != nil {
                 print("error : \(String(describing: error))")
                 return
@@ -94,7 +93,7 @@ class CustomImageViewComponent: UIImageView {
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         guard let data = image.jpegData(compressionQuality: 1) else { return }
         
-        //Checks if file exists, removes it if so.
+        // Checks if file exists, removes it if so.
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
@@ -133,8 +132,5 @@ class CustomImageViewComponent: UIImageView {
             guard let url = URL(string: componentData.imageUrl) else { return }
             fireImageDownloadingRequest(url, componentData)
         }
-        
     }
-    
 }
-

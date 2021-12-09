@@ -8,7 +8,6 @@
 import Foundation
 import BaseModules
 
-
 protocol MainViewDataFormatterProtocol {
     
     func setData(with response: MovieListDataResponse)
@@ -17,14 +16,13 @@ protocol MainViewDataFormatterProtocol {
     func getNumberOfSection() -> Int
     func getNumberOfItem(in section: Int) -> Int
     func getImageUrl(at index: Int) -> String
-    func getItemId(at index:Int) -> Int
+    func getItemId(at index: Int) -> Int
 }
-
 
 class MainViewDataFormatter: MainViewDataFormatterProtocol {
     
-    private var componentData : MovieListDataResponse?
-    private var list : [MovieResult] = [MovieResult]()
+    private var componentData: MovieListDataResponse?
+    private var list: [MovieResult] = [MovieResult]()
     
     func setData(with response: MovieListDataResponse) {
         self.componentData = response

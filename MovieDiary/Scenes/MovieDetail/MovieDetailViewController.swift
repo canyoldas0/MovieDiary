@@ -35,7 +35,6 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         ])
     }
     
-    
     private func listenViewModel() {
         
         viewModel.subscribeViewState { [weak self] state in
@@ -46,7 +45,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             case .failure:
                 return // Error screen
             case .loading:
-                return //Loading screen?
+                return // Loading screen?
             }
         }
     }

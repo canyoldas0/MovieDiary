@@ -10,7 +10,7 @@ import BaseModules
 
 class TopCollectionViewCell: BaseCollectionViewCell {
     
-    //card for each item to be displayed
+    // card for each item to be displayed
     private lazy var imageContainer: CustomImageViewComponentContainer = {
         let temp = CustomImageViewComponentContainer()
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -32,8 +32,7 @@ class TopCollectionViewCell: BaseCollectionViewCell {
             imageContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
+            imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 
         ])
 

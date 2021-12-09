@@ -7,10 +7,9 @@
 
 import Foundation
 
-
-class MovieDetailDataProvider : ApiServiceProvider<MovieDetailDataRequest> {
+class MovieDetailDataProvider: ApiServiceProvider<MovieDetailDataRequest> {
     
-    init(request : MovieDetailDataRequest) {
+    init(request: MovieDetailDataRequest) {
         super.init(method: .get,
                    baseUrl: BaseUrl.base.rawValue,
                    path: Path.detail(request.movie_id ?? 0).value,

@@ -23,4 +23,3 @@ extension ItemProviderProtocol {
     func getMoreData() { }
     func isLoadingCell(for index: Int) -> Bool { return false }
 }
-

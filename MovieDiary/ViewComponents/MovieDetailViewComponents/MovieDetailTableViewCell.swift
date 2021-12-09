@@ -23,7 +23,6 @@ class MovieDetailTableViewCell: BaseTableViewCell {
         return temp
     }()
     
-
     override func addMajorViews() {
         super.addMajorViews()
         addViewComponents()
@@ -43,7 +42,7 @@ class MovieDetailTableViewCell: BaseTableViewCell {
             movieDetailView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
             movieDetailView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
             movieDetailView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            movieDetailView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            movieDetailView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
 
         ])
     }

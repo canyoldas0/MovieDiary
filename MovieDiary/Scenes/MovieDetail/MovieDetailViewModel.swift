@@ -7,16 +7,15 @@
 
 import Foundation
 
-
 class MovieDetailViewModel {
     
-    private let requestData : MovieDetailDataRequest
+    private let requestData: MovieDetailDataRequest
     let dataFormatter: MovieDetailDataFormatterProtocol
     
     private var viewState: MovieDetailViewStateBlock?
     
-    init(formatter : MovieDetailDataFormatterProtocol,
-         requestData : MovieDetailDataRequest) {
+    init(formatter: MovieDetailDataFormatterProtocol,
+         requestData: MovieDetailDataRequest) {
         self.requestData = requestData
         self.dataFormatter = formatter
     }
@@ -34,7 +33,7 @@ class MovieDetailViewModel {
         do {
             guard let urlRequest = try? MovieDetailDataProvider(request: getMovieDetailRequest()).returnUrlRequest() else { return }
             viewState?(.loading)
-            fireApiCall(with:urlRequest, with: dataListener)
+            fireApiCall(with: urlRequest, with: dataListener)
         }
     }
     
@@ -51,7 +50,7 @@ class MovieDetailViewModel {
         
     }
     
-    private lazy var dataListener : (Result<MovieDetailDataResponse, ErrorResponse>) -> Void = { [weak self] result in
+    private lazy var dataListener: (Result<MovieDetailDataResponse, ErrorResponse>) -> Void = { [weak self] result in
         
         switch result {
         case .failure(let error):
@@ -60,6 +59,4 @@ class MovieDetailViewModel {
             self?.apiCallHandler(from: response)
         }
     }
-    
-    
 }

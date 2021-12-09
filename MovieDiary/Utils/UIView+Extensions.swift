@@ -13,7 +13,13 @@ extension UIView {
         
         transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6.0, options: .allowUserInteraction, animations: {
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 6.0,
+            options: .allowUserInteraction,
+            animations: {
             self.transform = CGAffineTransform.identity
         }, completion: completion)
         

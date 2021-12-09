@@ -10,7 +10,7 @@ import BaseModules
 
 class MainViewController: BaseViewController<MainViewModel> {
     
-    var topCollectionView : TopCollectionView!
+    var topCollectionView: TopCollectionView!
     
     override func prepareViewControllerSetup() {
         addViewComponents()
@@ -35,8 +35,6 @@ class MainViewController: BaseViewController<MainViewModel> {
         ])
         
     }
-    
-   
     
     private func subscribeViewModelListeners() {
         

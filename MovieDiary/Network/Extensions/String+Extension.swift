@@ -17,7 +17,7 @@ extension String {
 
 extension String {
     
-    func toLocalize() -> String{
+    func toLocalize() -> String {
         return NSLocalizedString(self, comment: "")
     }
     

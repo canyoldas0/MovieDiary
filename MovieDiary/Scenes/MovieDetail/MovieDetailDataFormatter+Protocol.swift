@@ -10,15 +10,15 @@ import BaseModules
 
 protocol MovieDetailDataFormatterProtocol {
     
-    func setDetailData(by response: MovieDetailDataResponse) //TODO?
+    func setDetailData(by response: MovieDetailDataResponse) // TODO?
     func getItem(at index: Int) -> GenericDataProtocol?
     func getImageUrl(at index: Int) -> String
-    func getNumberOfItem(in section:Int) -> Int
+    func getNumberOfItem(in section: Int) -> Int
 }
 
 class MovieDetailDataFormatter: MovieDetailDataFormatterProtocol {
     
-    private var list : [MovieDetailDataResponse] = [MovieDetailDataResponse]()
+    private var list: [MovieDetailDataResponse] = [MovieDetailDataResponse]()
     
     func setDetailData(by response: MovieDetailDataResponse) {
         self.list.append(response)
@@ -32,11 +32,11 @@ class MovieDetailDataFormatter: MovieDetailDataFormatterProtocol {
         
     }
     
-    func getMovieName(at index:Int) -> String {
+    func getMovieName(at index: Int) -> String {
         return list[index].originalTitle ?? ""
     }
     
-    func getImageData(at index:Int) -> CustomImageViewComponentData {
+    func getImageData(at index: Int) -> CustomImageViewComponentData {
         return CustomImageViewComponentData(imageUrl: getImageUrl(at: index))
     }
     
@@ -44,8 +44,7 @@ class MovieDetailDataFormatter: MovieDetailDataFormatterProtocol {
         return list[index].posterURL
     }
     
-    func getNumberOfItem(in section:Int) -> Int {
+    func getNumberOfItem(in section: Int) -> Int {
         return list.count
     }
-    
 }

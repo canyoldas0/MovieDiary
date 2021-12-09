@@ -10,7 +10,7 @@ import BaseModules
 
 class DetailView: GenericBaseView<DetailViewData> {
     
-    //MARK: - View Components
+    // MARK: - View Components
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -40,52 +40,6 @@ class DetailView: GenericBaseView<DetailViewData> {
         return temp
     }()
     
-    private lazy var movieNameLabel: UILabel = {
-        let temp = UILabel()
-        temp.textAlignment = .center
-        temp.text = "Movie Title "
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.font = MainFont.medium(16).value
-        temp.numberOfLines = 0
-        temp.lineBreakMode = .byWordWrapping
-        return temp
-    }()
-    
-    
-    
-    private lazy var categoryLabel: UILabel = {
-        let temp = UILabel()
-        temp.textAlignment = .center
-        temp.text = "Categories "
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.font = MainFont.medium(14).value
-        temp.numberOfLines = 0
-        temp.lineBreakMode = .byWordWrapping
-        return temp
-    }()
-    
-    private lazy var scoreLabel: UILabel = {
-        let temp = UILabel()
-        temp.textAlignment = .center
-        temp.text = "7.4 / 10 "
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.font = MainFont.medium(14).value
-        temp.numberOfLines = 0
-        temp.lineBreakMode = .byWordWrapping
-        return temp
-    }()
-    
-    private lazy var releaseLabel: UILabel = {
-        let temp = UILabel()
-        temp.textAlignment = .center
-        temp.text = "Release date 121231231 "
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.font = MainFont.medium(14).value
-        temp.numberOfLines = 0
-        temp.lineBreakMode = .byWordWrapping
-        return temp
-    }()
-
     private lazy var overviewLabel: UILabel = {
         let temp = UILabel()
         temp.textAlignment = .center
@@ -97,9 +51,8 @@ class DetailView: GenericBaseView<DetailViewData> {
         return temp
     }()
 
-    //MARK: - StackViews
+    // MARK: - StackViews
 
-    
     override func addMajorFields() {
         super.addMajorFields()
         addViewComponents()
@@ -116,20 +69,16 @@ class DetailView: GenericBaseView<DetailViewData> {
             containerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
 
-            
             stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
-    
     override func loadDataToView() {
         super.loadDataToView()
         guard let data = returnData() else { return }
-        
         self.imageContainer.setData(data: data.imageData)
-        self.movieNameLabel.text = data.movieName
     }
 
 }

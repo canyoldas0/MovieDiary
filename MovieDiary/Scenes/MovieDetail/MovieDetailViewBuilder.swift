@@ -17,4 +17,3 @@ class MovieDetailViewBuilder {
         return viewController
     }
 }
-

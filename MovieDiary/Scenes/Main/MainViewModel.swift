@@ -11,7 +11,7 @@ class MainViewModel {
     
     let dataFormatter: MainViewDataFormatterProtocol!
     
-    private var popularMoviesState : PopularMoviesStateBlock?
+    private var popularMoviesState: PopularMoviesStateBlock?
     var detailViewState: MovieDetailRequestBlock?
     
     init(dataFormatter: MainViewDataFormatterProtocol) {
@@ -26,7 +26,6 @@ class MainViewModel {
         detailViewState = completion
     }
     
-    
     func getData() {
         do {
             guard let urlRequest = try? PopularMovieListProvider(request: getPopularMovieListRequest()).returnUrlRequest() else { return }
@@ -34,7 +33,6 @@ class MainViewModel {
             print(urlRequest)
         }
     }
-    
     
     private func fireApiCall(with request: URLRequest, with completion: @escaping (Result<MovieListDataResponse, ErrorResponse>) -> Void) {
         
@@ -47,13 +45,12 @@ class MainViewModel {
         popularMoviesState?(.done)
     }
     
-    
     private func getPopularMovieListRequest() -> PopularMovieListDataRequest {
         
         return PopularMovieListDataRequest()
     }
     
-    private lazy var apiCallHandler:(Result<MovieListDataResponse, ErrorResponse>) -> Void = { [weak self] result in
+    private lazy var apiCallHandler: (Result<MovieListDataResponse, ErrorResponse>) -> Void = { [weak self] result in
         
         switch result {
         case .success(let data):

@@ -8,7 +8,6 @@
 import Foundation
 import BaseModules
 
-
 enum EndpointHelper {
     
     enum BaseUrls: String {

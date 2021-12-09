@@ -8,12 +8,11 @@
 import Foundation
 import BaseModules
 
-class DetailViewData : GenericDataProtocol {
+class DetailViewData: GenericDataProtocol {
     
     private(set) var imageData: CustomImageViewComponentData
     private(set) var movieName: String
 
-    
     init(imageData: CustomImageViewComponentData,
          movieName: String
         ) {

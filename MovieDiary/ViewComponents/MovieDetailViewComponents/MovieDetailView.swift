@@ -12,7 +12,7 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
     
     weak var delegate: ItemProviderProtocol?
     
-    private lazy var tableView : UITableView = {
+    private lazy var tableView: UITableView = {
         let temp = UITableView()
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.delegate = self
@@ -39,7 +39,7 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -50,7 +50,7 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
     }
 }
 
-//MARK: - UITableViewDataSource & Delegate
+// MARK: - UITableViewDataSource & Delegate
 extension MovieDetailView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate?.askNumberOfItem(in: section) ?? 0

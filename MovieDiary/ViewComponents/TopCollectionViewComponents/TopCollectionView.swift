@@ -43,7 +43,7 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
             collectionComponent.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionComponent.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionComponent.topAnchor.constraint(equalTo: topAnchor),
-            collectionComponent.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionComponent.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
     }
@@ -55,7 +55,7 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
     }
 }
 
-extension TopCollectionView: UICollectionViewDelegate,UICollectionViewDataSource {
+extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return delegate?.askNumberOfItem(in: section) ?? 0
     }
@@ -64,7 +64,8 @@ extension TopCollectionView: UICollectionViewDelegate,UICollectionViewDataSource
         
         guard let data = delegate?.askData(at: indexPath.row) else { return UICollectionViewCell() }
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCollectionViewCell.identifier, for: indexPath) as? TopCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: TopCollectionViewCell.identifier, for: indexPath) as? TopCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(by: data)
         
         return cell
@@ -82,9 +83,6 @@ extension TopCollectionView: UICollectionViewDelegate,UICollectionViewDataSource
         })
     }
 }
-
-
-
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension TopCollectionView: UICollectionViewDelegateFlowLayout {

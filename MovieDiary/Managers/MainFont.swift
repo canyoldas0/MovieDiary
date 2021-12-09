@@ -8,7 +8,6 @@
 import UIKit
 import BaseModules
 
-
 enum MainFont: GenericValueProtocol {
     
     typealias Value = UIFont?

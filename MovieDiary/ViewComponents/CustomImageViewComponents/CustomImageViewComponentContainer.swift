@@ -1,4 +1,3 @@
-
 import UIKit
 import BaseModules
 
@@ -26,8 +25,7 @@ class CustomImageViewComponentContainer: GenericBaseView<CustomImageViewComponen
             customImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             customImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             customImageView.topAnchor.constraint(equalTo: topAnchor),
-            customImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+            customImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
