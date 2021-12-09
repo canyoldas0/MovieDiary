@@ -21,12 +21,18 @@ class DetailView: GenericBaseView<DetailViewData> {
     }()
     
     private lazy var stackView: UIStackView = {
-        let temp = UIStackView(arrangedSubviews: [])
+        let temp = UIStackView(arrangedSubviews: [titlePack, imageContainer, overviewLabel])
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.axis = .vertical
         temp.distribution = .equalSpacing
         temp.spacing = 20
         temp.alignment = .leading
+        return temp
+    }()
+    
+    lazy var titlePack: TitleLabelPack = {
+        let temp = TitleLabelPack()
+        temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
@@ -64,10 +70,10 @@ class DetailView: GenericBaseView<DetailViewData> {
         
         NSLayoutConstraint.activate([
         
-            containerView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),

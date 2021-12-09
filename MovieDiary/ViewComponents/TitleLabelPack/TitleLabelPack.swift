@@ -54,4 +54,48 @@ class TitleLabelPack: GenericBaseView<TitleLabelPackData> {
         return temp
     }()
     
+    private lazy var upperStackView: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [movieNameLabel, scoreLabel])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .horizontal
+        temp.distribution = .fillProportionally
+        return temp
+    }()
+    
+    private lazy var lowerStackView: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [categoryLabel, releaseLabel])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .horizontal
+        temp.distribution = .fillProportionally
+        return temp
+    }()
+    
+    private lazy var stackView: UIStackView = {
+       let temp = UIStackView(arrangedSubviews: [upperStackView, lowerStackView])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .vertical
+        temp.distribution = .fillEqually
+        return temp
+    }()
+    
+    override func addMajorFields() {
+        super.addMajorFields()
+        addViewComponents()
+    }
+    
+    private func addViewComponents() {
+        addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    override func loadDataToView() {
+        super.loadDataToView()
+//        guard let data = returnData() else { return }
+    }
 }

@@ -21,7 +21,7 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
         temp.bounces = false
         temp.separatorStyle = .none
         temp.estimatedRowHeight = UITableView.automaticDimension
-        temp.rowHeight = UITableView.automaticDimension //
+        temp.rowHeight = 700 // UITableView.automaticDimension //
         temp.register(MovieDetailTableViewCell.self, forCellReuseIdentifier: MovieDetailTableViewCell.identifier)
         return temp
     }()

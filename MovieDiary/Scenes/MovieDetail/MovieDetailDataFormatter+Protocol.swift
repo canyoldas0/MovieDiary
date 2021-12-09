@@ -10,7 +10,7 @@ import BaseModules
 
 protocol MovieDetailDataFormatterProtocol {
     
-    func setDetailData(by response: MovieDetailDataResponse) // TODO?
+    func setDetailData(by response: MovieDetailDataResponse)
     func getItem(at index: Int) -> GenericDataProtocol?
     func getImageUrl(at index: Int) -> String
     func getNumberOfItem(in section: Int) -> Int
