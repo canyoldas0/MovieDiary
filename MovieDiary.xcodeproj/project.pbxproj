@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E2E5B1327629A460043554E /* TitleLabelPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2E5B1227629A460043554E /* TitleLabelPack.swift */; };
-		1E2E5B1527629A640043554E /* TitleLabelPackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2E5B1427629A640043554E /* TitleLabelPackData.swift */; };
 		1E35B28E2750FBA200039C97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35B28D2750FBA200039C97 /* AppDelegate.swift */; };
 		1E35B2972750FBA300039C97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E35B2962750FBA300039C97 /* Assets.xcassets */; };
 		1E35B29A2750FBA300039C97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E35B2982750FBA300039C97 /* LaunchScreen.storyboard */; };
@@ -68,8 +66,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E2E5B1227629A460043554E /* TitleLabelPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabelPack.swift; sourceTree = "<group>"; };
-		1E2E5B1427629A640043554E /* TitleLabelPackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabelPackData.swift; sourceTree = "<group>"; };
 		1E35B28A2750FBA200039C97 /* MovieDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E35B28D2750FBA200039C97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E35B2962750FBA300039C97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,15 +137,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E2E5B1127629A340043554E /* TitleLabelPack */ = {
-			isa = PBXGroup;
-			children = (
-				1E2E5B1227629A460043554E /* TitleLabelPack.swift */,
-				1E2E5B1427629A640043554E /* TitleLabelPackData.swift */,
-			);
-			path = TitleLabelPack;
-			sourceTree = "<group>";
-		};
 		1E35B2812750FBA200039C97 = {
 			isa = PBXGroup;
 			children = (
@@ -216,7 +203,6 @@
 		1E35B2AF2751023A00039C97 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				1E2E5B1127629A340043554E /* TitleLabelPack */,
 				1EC301B9275E8DD8008C4EB6 /* MovieDetailViewComponents */,
 				1E9C31012751030D00525DB9 /* CustomImageViewComponents */,
 				1E35B2B02751029700039C97 /* TopCollectionViewComponents */,
@@ -504,7 +490,6 @@
 				1E79F740275BF19A0042F418 /* PopularMoviesViewState.swift in Sources */,
 				1EC301BD275E8FA3008C4EB6 /* MovieDetailViewData.swift in Sources */,
 				1EC301C1275E9140008C4EB6 /* MovieDetailTableViewCell.swift in Sources */,
-				1E2E5B1527629A640043554E /* TitleLabelPackData.swift in Sources */,
 				1E3CBE3D275B809600656585 /* MovieListDataResponse.swift in Sources */,
 				1EC301C5275E9CE2008C4EB6 /* DetailViewData.swift in Sources */,
 				1E3CBE16275A3AD100656585 /* NetworkManager+Protocol.swift in Sources */,
@@ -514,7 +499,6 @@
 				1E35B2AE2751023400039C97 /* ImageCacheManager.swift in Sources */,
 				1EC301BB275E8F6D008C4EB6 /* MovieDetailView.swift in Sources */,
 				1E9C31082751032900525DB9 /* CustomImageViewComponent.swift in Sources */,
-				1E2E5B1327629A460043554E /* TitleLabelPack.swift in Sources */,
 				1EC301CC275EA2BA008C4EB6 /* MovieDetailVM+ItemProviderProtocol.swift in Sources */,
 				1E3CBE28275A43E900656585 /* HTTPHeader.swift in Sources */,
 				1E3CBE24275A43A300656585 /* HTTPMethod.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import BaseModules
 
 extension MainViewModel: ItemProviderProtocol {
-    
+ 
     func askNumberOfSection() -> Int {
         return 0
     }
@@ -25,5 +25,4 @@ extension MainViewModel: ItemProviderProtocol {
     func selectedItem(at index: Int) {
         detailViewState?(MovieDetailDataRequest(movie_id: dataFormatter.getItemId(at: index)))
     }
-
 }

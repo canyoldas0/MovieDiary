@@ -17,20 +17,21 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         addViewComponents()
         listenViewModel()
         viewModel.getDetailData()
-       
+        modalPresentationStyle = .fullScreen
+        view.backgroundColor = .clear
     }
-    
+
     private func addViewComponents() {
         mainComponent = MovieDetailView()
         mainComponent.translatesAutoresizingMaskIntoConstraints = false
         mainComponent.delegate = viewModel
         view.addSubview(mainComponent)
-        
+      
         NSLayoutConstraint.activate([
 
-            mainComponent.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainComponent.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mainComponent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainComponent.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainComponent.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainComponent.topAnchor.constraint(equalTo: view.topAnchor),
             mainComponent.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }

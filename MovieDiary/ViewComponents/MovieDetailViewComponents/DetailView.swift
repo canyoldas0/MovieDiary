@@ -16,32 +16,38 @@ class DetailView: GenericBaseView<DetailViewData> {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 6
+        view.backgroundColor = .clear
         view.clipsToBounds = true
         return view
     }()
     
     private lazy var stackView: UIStackView = {
-        let temp = UIStackView(arrangedSubviews: [titlePack, imageContainer, overviewLabel])
+        let temp = UIStackView(arrangedSubviews: [imageContainer, overviewLabel])
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.axis = .vertical
-        temp.distribution = .equalSpacing
+        temp.distribution = .fill
         temp.spacing = 20
         temp.alignment = .leading
         return temp
     }()
     
-    lazy var titlePack: TitleLabelPack = {
-        let temp = TitleLabelPack()
+    private lazy var titleLabel: UILabel = {
+        let temp = UILabel()
+        temp.textAlignment = .left
+        temp.text = "Red Notice (2021)"
         temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.font = MainFont.medium(16).value
+        temp.numberOfLines = 0
+        temp.lineBreakMode = .byWordWrapping
         return temp
     }()
-    
+
     private lazy var imageContainer: CustomImageViewComponentContainer = {
         let temp = CustomImageViewComponentContainer()
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.layer.cornerRadius = 2
-        temp.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        temp.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        temp.heightAnchor.constraint(equalToConstant: 196).isActive = true
+        temp.widthAnchor.constraint(equalToConstant: 108).isActive = true
         temp.clipsToBounds = true
         return temp
     }()
@@ -49,7 +55,7 @@ class DetailView: GenericBaseView<DetailViewData> {
     private lazy var overviewLabel: UILabel = {
         let temp = UILabel()
         temp.textAlignment = .center
-        temp.text = "lorem ipsum "
+        temp.text = "lorem ipsumaldhjakjdhaskdjhasdjkahsdkjashkdjahskjh "
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.font = MainFont.medium(14).value
         temp.numberOfLines = 0
@@ -66,17 +72,23 @@ class DetailView: GenericBaseView<DetailViewData> {
     
     private func addViewComponents() {
         addSubview(containerView)
+        containerView.addSubview(titleLabel)
         containerView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
         
             containerView.topAnchor.constraint(equalTo: topAnchor),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 30),
 
-            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])

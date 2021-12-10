@@ -14,16 +14,16 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     override func prepareViewControllerSetup() {
         addViewComponents()
-        view.backgroundColor = .white
         viewModel.getData()
+        view.backgroundColor = .white
         subscribeViewModelListeners()
-        
-    }
+        }
     
     private func addViewComponents() {
         topCollectionView = TopCollectionView()
         topCollectionView.translatesAutoresizingMaskIntoConstraints = false
         topCollectionView.delegate = viewModel
+        
         view.addSubview(topCollectionView)
         
         NSLayoutConstraint.activate([
@@ -59,7 +59,8 @@ class MainViewController: BaseViewController<MainViewModel> {
     private func fireDetailView(with data: MovieDetailDataRequest) {
         
         let viewController = MovieDetailViewBuilder.build(with: data)
-        navigationController?.pushViewController(viewController, animated: true)
+//        navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.present(viewController, animated: true, completion: nil)
         
     }
 }

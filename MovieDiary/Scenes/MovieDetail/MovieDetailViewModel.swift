@@ -12,7 +12,7 @@ class MovieDetailViewModel {
     private let requestData: MovieDetailDataRequest
     let dataFormatter: MovieDetailDataFormatterProtocol
     
-    private var viewState: MovieDetailViewStateBlock?
+     var viewState: MovieDetailViewStateBlock?
     
     init(formatter: MovieDetailDataFormatterProtocol,
          requestData: MovieDetailDataRequest) {

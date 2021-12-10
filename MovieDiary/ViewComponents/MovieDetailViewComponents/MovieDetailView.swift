@@ -12,6 +12,14 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
     
     weak var delegate: ItemProviderProtocol?
     
+    lazy var backgroundView: UIView = {
+        let temp = UIView(frame: self.bounds)
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.backgroundColor = .black
+        temp.alpha = 0.5
+        return temp
+    }()
+    
     private lazy var tableView: UITableView = {
         let temp = UITableView()
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +29,8 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
         temp.bounces = false
         temp.separatorStyle = .none
         temp.estimatedRowHeight = UITableView.automaticDimension
-        temp.rowHeight = 700 // UITableView.automaticDimension //
+        temp.rowHeight = 1300
+        // UITableView.automaticDimension //
         temp.register(MovieDetailTableViewCell.self, forCellReuseIdentifier: MovieDetailTableViewCell.identifier)
         return temp
     }()
@@ -32,13 +41,13 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
     }
     
     private func addTableView() {
+        addSubview(backgroundView)
         addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: 400),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
