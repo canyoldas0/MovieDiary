@@ -31,6 +31,7 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
         temp.estimatedRowHeight = 600
         temp.rowHeight = UITableView.automaticDimension
         temp.layer.cornerRadius = 24
+        temp.showsVerticalScrollIndicator = false
         // UITableView.automaticDimension //
         temp.register(MovieDetailTableViewCell.self, forCellReuseIdentifier: MovieDetailTableViewCell.identifier)
         return temp

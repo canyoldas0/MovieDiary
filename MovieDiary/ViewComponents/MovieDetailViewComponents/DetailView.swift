@@ -45,14 +45,17 @@ class DetailView: GenericBaseView<DetailViewData> {
     private var categoryLabel: UILabel = {
         let temp = UILabel()
         temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.text = "Drama, Comedy"
+        temp.numberOfLines = 0
+        temp.font = MainFont.medium(14).value
+        temp.lineBreakMode = .byWordWrapping
+        temp.text = " "
         return temp
     }()
     
     lazy var rateLabel: UILabel = {
         let temp = UILabel()
         temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.text = "9.2/10"
+        temp.text = " "
         return temp
     }()
     
@@ -107,7 +110,7 @@ class DetailView: GenericBaseView<DetailViewData> {
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.axis = .vertical
         temp.spacing = 10
-        temp.distribution = .fillEqually
+        temp.distribution = .equalSpacing
         temp.alignment = .leading
         return temp
     }()

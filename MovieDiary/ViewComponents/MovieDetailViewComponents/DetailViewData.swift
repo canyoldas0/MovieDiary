@@ -16,7 +16,6 @@ class DetailViewData: GenericDataProtocol {
     private(set) var score: String
     private(set) var overview: String
     
-
     init(imageData: CustomImageViewComponentData,
          movieName: String,
          categories: String,
