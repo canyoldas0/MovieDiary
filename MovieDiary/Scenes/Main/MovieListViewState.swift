@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias PopularMoviesStateBlock = (PopularMoviesViewState) -> Void
+typealias PopularMoviesStateBlock = (MovieListViewState) -> Void
 
-enum PopularMoviesViewState {
+enum MovieListViewState {
     
     case loading
     case done
