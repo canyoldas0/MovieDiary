@@ -11,3 +11,4 @@ typealias BaseUrl = EndpointHelper.BaseUrls
 typealias Path = EndpointHelper.Paths
 
 typealias MovieDetailRequestBlock = (MovieDetailDataRequest) -> Void
+typealias MovieListViewStateBlock = (MovieListViewState) -> Void

@@ -11,14 +11,14 @@ class MainViewModel {
     
     let dataFormatter: MainViewDataFormatterProtocol!
     
-    private var popularMoviesState: PopularMoviesStateBlock?
+    private var popularMoviesState: MovieListViewStateBlock?
     var detailViewState: MovieDetailRequestBlock?
     
     init(dataFormatter: MainViewDataFormatterProtocol) {
         self.dataFormatter = dataFormatter
     }
     
-    func subscribePopularList(completion: @escaping PopularMoviesStateBlock) {
+    func subscribePopularList(completion: @escaping MovieListViewStateBlock) {
         popularMoviesState = completion
     }
     

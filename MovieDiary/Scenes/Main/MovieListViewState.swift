@@ -1,13 +1,11 @@
 //
-//  PopularMoviesViewState.swift
+//  MovieListViewState.swift
 //  MovieDiary
 //
-//  Created by Can Yoldas on 4.12.2021.
+//  Created by Can Yoldas on 13.12.2021.
 //
 
 import Foundation
-
-typealias PopularMoviesStateBlock = (MovieListViewState) -> Void
 
 enum MovieListViewState {
     
@@ -16,3 +14,4 @@ enum MovieListViewState {
     case failure
     
 }
+
