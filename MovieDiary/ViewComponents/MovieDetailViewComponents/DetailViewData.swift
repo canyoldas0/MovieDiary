@@ -12,12 +12,22 @@ class DetailViewData: GenericDataProtocol {
     
     private(set) var imageData: CustomImageViewComponentData
     private(set) var movieName: String
+    private(set) var categories: String
+    private(set) var score: String
+    private(set) var overview: String
+    
 
     init(imageData: CustomImageViewComponentData,
-         movieName: String
+         movieName: String,
+         categories: String,
+         score: String,
+         overview: String
+         
         ) {
         self.imageData = imageData
         self.movieName = movieName
-        
+        self.categories = categories
+        self.score = score
+        self.overview = overview
     }
 }

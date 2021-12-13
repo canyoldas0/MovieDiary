@@ -21,16 +21,6 @@ class DetailView: GenericBaseView<DetailViewData> {
         return view
     }()
     
-    private lazy var stackView: UIStackView = {
-        let temp = UIStackView(arrangedSubviews: [imageContainer, overviewLabel])
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.axis = .vertical
-        temp.distribution = .fill
-        temp.spacing = 20
-        temp.alignment = .leading
-        return temp
-    }()
-    
     private lazy var titleLabel: UILabel = {
         let temp = UILabel()
         temp.textAlignment = .left
@@ -52,6 +42,46 @@ class DetailView: GenericBaseView<DetailViewData> {
         return temp
     }()
     
+    private var categoryLabel: UILabel = {
+        let temp = UILabel()
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.text = "Drama, Comedy"
+        return temp
+    }()
+    
+    lazy var rateLabel: UILabel = {
+        let temp = UILabel()
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.text = "9.2/10"
+        return temp
+    }()
+    
+    private lazy var textStackView: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [categoryLabel, rateLabel])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .vertical
+        temp.alignment = .leading
+        temp.spacing = 10
+        temp.distribution = .fillEqually
+        return temp
+    }()
+    
+    private lazy var middleStackView: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [imageContainer, textStackView])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .horizontal
+        temp.alignment = .leading
+        temp.spacing = 20
+        return temp
+    }()
+    
+    lazy var overviewPlaceholderLabel: UILabel = {
+        let temp = UILabel()
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.text = "Overview"
+        return temp
+    }()
+    
     private lazy var overviewLabel: UILabel = {
         let temp = UILabel()
         temp.textAlignment = .center
@@ -60,6 +90,25 @@ class DetailView: GenericBaseView<DetailViewData> {
         temp.font = MainFont.medium(14).value
         temp.numberOfLines = 0
         temp.lineBreakMode = .byWordWrapping
+        return temp
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [middleStackView, overviewPack])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .vertical
+        temp.spacing = 20
+        temp.distribution = .equalSpacing
+        return temp
+    }()
+    
+    private lazy var overviewPack: UIStackView = {
+        let temp = UIStackView(arrangedSubviews: [overviewPlaceholderLabel, overviewLabel])
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.axis = .vertical
+        temp.spacing = 10
+        temp.distribution = .fillEqually
+        temp.alignment = .leading
         return temp
     }()
 
@@ -73,7 +122,8 @@ class DetailView: GenericBaseView<DetailViewData> {
     private func addViewComponents() {
         addSubview(containerView)
         containerView.addSubview(titleLabel)
-        containerView.addSubview(stackView)
+        containerView.addSubview(middleStackView)
+        containerView.addSubview(overviewPack)
         
         NSLayoutConstraint.activate([
         
@@ -84,19 +134,29 @@ class DetailView: GenericBaseView<DetailViewData> {
             
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 30),
-
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            middleStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            middleStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            middleStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            middleStackView.heightAnchor.constraint(equalToConstant: 200),
+            
+            overviewPack.topAnchor.constraint(equalTo: middleStackView.bottomAnchor, constant: 10),
+            overviewPack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            overviewPack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            overviewPack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            
         ])
     }
     override func loadDataToView() {
         super.loadDataToView()
         guard let data = returnData() else { return }
         self.imageContainer.setData(data: data.imageData)
+        self.titleLabel.text = data.movieName
+        self.rateLabel.text = data.score
+        self.categoryLabel.text = data.categories
+        self.overviewLabel.text = data.overview
+        
     }
 
 }

@@ -28,8 +28,9 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
         temp.allowsSelection = false
         temp.bounces = false
         temp.separatorStyle = .none
-        temp.estimatedRowHeight = UITableView.automaticDimension
-        temp.rowHeight = 1300
+        temp.estimatedRowHeight = 600
+        temp.rowHeight = UITableView.automaticDimension
+        temp.layer.cornerRadius = 24
         // UITableView.automaticDimension //
         temp.register(MovieDetailTableViewCell.self, forCellReuseIdentifier: MovieDetailTableViewCell.identifier)
         return temp
@@ -53,7 +54,7 @@ class MovieDetailView: GenericBaseView<MovieDetailViewData> {
     }
     
     func reloadTableView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+        DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
@@ -76,9 +77,4 @@ extension MovieDetailView: UITableViewDelegate, UITableViewDataSource {
         cell.setData(by: data)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-
 }
