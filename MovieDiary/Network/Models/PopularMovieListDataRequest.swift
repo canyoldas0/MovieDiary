@@ -12,4 +12,8 @@ class PopularMovieListDataRequest: Codable {
     private(set) public var page: Int = 1
     private(set) public var api_key: String = "da341460ab89e31e92146f13adfbe54c"
     
+    public init(page: Int = 1) {
+            self.page = page
+        }
+    
 }

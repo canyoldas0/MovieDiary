@@ -25,4 +25,14 @@ extension MainViewModel: ItemProviderProtocol {
     func selectedItem(at index: Int) {
         detailViewState?(MovieDetailDataRequest(movie_id: dataFormatter.getItemId(at: index)))
     }
+    
+    func isLoadingCell(for index: Int) -> Bool {
+        return index >= dataFormatter.getCount()
+    }
+    
+    func getMoreData() {
+        guard dataFormatter.paginationData.checkLoadingMore() else { return }
+        dataFormatter.paginationData.nextOffset()
+        getData()
+    }
 }

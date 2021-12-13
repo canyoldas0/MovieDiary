@@ -9,7 +9,7 @@ import Foundation
 
 class MainViewModel {
     
-    let dataFormatter: MainViewDataFormatterProtocol!
+    var dataFormatter: MainViewDataFormatterProtocol!
     
     private var popularMoviesState: MovieListViewStateBlock?
     var detailViewState: MovieDetailRequestBlock?
@@ -40,14 +40,14 @@ class MainViewModel {
     }
     
     private func dataHandler(with response: MovieListDataResponse) {
-        
+        dataFormatter.paginationData.fetching = false
         dataFormatter.setData(with: response)
         popularMoviesState?(.done)
     }
     
     private func getPopularMovieListRequest() -> PopularMovieListDataRequest {
         
-        return PopularMovieListDataRequest()
+        return PopularMovieListDataRequest(page: dataFormatter.paginationData.page)
     }
     
     private lazy var apiCallHandler: (Result<MovieListDataResponse, ErrorResponse>) -> Void = { [weak self] result in

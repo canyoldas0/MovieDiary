@@ -31,7 +31,7 @@ class MainViewController: BaseViewController<MainViewModel> {
             topCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             topCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topCollectionView.heightAnchor.constraint(equalToConstant: 300)
+            topCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
     }

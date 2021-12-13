@@ -10,6 +10,8 @@ import BaseModules
 
 protocol MainViewDataFormatterProtocol {
     
+    var paginationData: PaginationInfo { get set }
+    
     func setData(with response: MovieListDataResponse)
     func getItem(at index: Int) -> GenericDataProtocol?
     func getCount() -> Int
@@ -21,26 +23,17 @@ protocol MainViewDataFormatterProtocol {
 
 class MainViewDataFormatter: MainViewDataFormatterProtocol {
     
-    private var componentData: MovieListDataResponse?
     private var list: [MovieResult] = [MovieResult]()
+    var paginationData: PaginationInfo = PaginationInfo()
     
     func setData(with response: MovieListDataResponse) {
-        self.componentData = response
+        self.paginationData.resultCount = response.results.count
         self.list.append(contentsOf: response.results)
-        print(list.count)
     }
     
     func getItem(at index: Int) -> GenericDataProtocol? {
         
         return CustomImageViewComponentData(imageUrl: getImageUrl(at: index))
-    }
-    
-    func getImageUrl(at index: Int) -> String {
-        return list[index].posterURL
-    }
-    
-    func getCount() -> Int {
-        return list.count
     }
     
     func getNumberOfSection() -> Int {
@@ -49,6 +42,15 @@ class MainViewDataFormatter: MainViewDataFormatterProtocol {
     
     func getNumberOfItem(in section: Int) -> Int {
         return list.count
+    }
+    
+    func getCount() -> Int {
+        return list.count
+    }
+    
+    // MARK: - Get Properties
+    func getImageUrl(at index: Int) -> String {
+        return list[index].posterURL
     }
     
     func getItemId(at index: Int) -> Int {

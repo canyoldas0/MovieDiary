@@ -14,9 +14,9 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
     
     private lazy var collectionComponent: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 15
+        layout.minimumInteritemSpacing = 15
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let temp = UICollectionView(frame: .zero, collectionViewLayout: layout)
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
         temp.dataSource = self
         temp.showsHorizontalScrollIndicator = false
         temp.register(TopCollectionViewCell.self, forCellWithReuseIdentifier: TopCollectionViewCell.identifier)
-        //        temp.register(LoadingCellView.self, forCellWithReuseIdentifier: LoadingCellView.identifier)
+        temp.register(LoadingCellView.self, forCellWithReuseIdentifier: LoadingCellView.identifier)
         return temp
     }()
     
@@ -53,6 +53,10 @@ class TopCollectionView: GenericBaseView<TopCollectionViewData> {
             self.collectionComponent.reloadData()
         }
     }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return delegate?.isLoadingCell(for: indexPath.row) ?? false
+    }
 }
 
 extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -62,6 +66,13 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        if isLoadingCell(for: indexPath) {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: LoadingCellView.identifier,
+                for: indexPath) as? LoadingCellView else { fatalError() }
+            return cell
+        } else {
+        
         guard let data = delegate?.askData(at: indexPath.row) else { return UICollectionViewCell() }
         
         guard let cell = collectionView.dequeueReusableCell(
@@ -69,6 +80,14 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.setData(by: data)
         
         return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if isLoadingCell(for: indexPath) {
+            print("here")
+            delegate?.getMoreData()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
