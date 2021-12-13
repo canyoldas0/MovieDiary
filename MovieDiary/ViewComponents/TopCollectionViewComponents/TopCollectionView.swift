@@ -84,6 +84,7 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath.row)
         if isLoadingCell(for: indexPath) {
             print("here")
             delegate?.getMoreData()

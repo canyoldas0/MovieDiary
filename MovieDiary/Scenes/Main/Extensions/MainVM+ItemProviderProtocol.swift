@@ -27,7 +27,7 @@ extension MainViewModel: ItemProviderProtocol {
     }
     
     func isLoadingCell(for index: Int) -> Bool {
-        return index >= dataFormatter.getCount()
+        return index + 1 >= dataFormatter.getCount()
     }
     
     func getMoreData() {
