@@ -11,11 +11,11 @@ class MainTabBarBuilder {
     
     class func build() -> UIViewController {
         
-        let mainViewController = MainViewBuilder.build()
-//        let AccountViewController = AccountViewBuilder.build()
+        let mainVC = MainViewBuilder.build()
+        let searchVC = SearchViewBuilder.build()
 
         let tabViewController = MainTabBarController()
-        tabViewController.viewControllers = [mainViewController]
+        tabViewController.viewControllers = [mainVC, searchVC]
         tabViewController.tabBar.tintColor = .black
         tabViewController.tabBar.backgroundColor = .systemBackground
         
