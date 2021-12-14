@@ -54,7 +54,6 @@ class MovieDetailDataFormatter: MovieDetailDataFormatterProtocol {
         guard let date = dateFormatter.date(from: dateString ?? "") else { return ""}
         print("date \(date)")
         
-    
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current

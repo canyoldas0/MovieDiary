@@ -9,12 +9,20 @@ import UIKit
 
 class MainViewBuilder {
     
-    class func build() -> MainViewController {
+    class func build() -> UIViewController {
         
         let dataFormatter = MainViewDataFormatter()
         let viewModel = MainViewModel(dataFormatter: dataFormatter)
         let viewController = MainViewController(viewModel: viewModel)
+        let navigationVC = UINavigationController(rootViewController: viewController)
         viewController.title = "Popular Movies"
-        return viewController
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = AppTheme.smooth.value
+        viewController.navigationController?.navigationBar.standardAppearance = appearance
+        viewController.navigationController?.navigationBar.scrollEdgeAppearance =
+                                                viewController.navigationController?.navigationBar.standardAppearance
+        return navigationVC
     }
 }
