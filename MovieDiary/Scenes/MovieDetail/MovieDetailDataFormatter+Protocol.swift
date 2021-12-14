@@ -52,7 +52,6 @@ class MovieDetailDataFormatter: MovieDetailDataFormatterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let date = dateFormatter.date(from: dateString ?? "") else { return ""}
-        print("date \(date)")
         
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
