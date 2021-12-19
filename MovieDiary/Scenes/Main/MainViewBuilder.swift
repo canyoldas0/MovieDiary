@@ -16,6 +16,8 @@ class MainViewBuilder {
         let viewController = MainViewController(viewModel: viewModel)
         let navigationVC = UINavigationController(rootViewController: viewController)
         viewController.title = "Popular Movies"
+        viewController.tabBarItem.image = TabBarImages.home.value
+        viewController.tabBarItem.selectedImage = TabBarImages.homeSelected.value
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class SearchViewBuilder {
     
     class func build() -> UIViewController {
@@ -15,7 +14,16 @@ class SearchViewBuilder {
         let viewModel = SearchViewModel()
         let viewController = SearchViewController(viewModel: viewModel)
         viewController.title = "Search"
+        viewController.tabBarItem.image = TabBarImages.search.value
+        let navigationVC = UINavigationController(rootViewController: viewController)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = AppTheme.smooth.value
+        viewController.navigationController?.navigationBar.prefersLargeTitles = true
+        viewController.navigationController?.navigationBar.standardAppearance = appearance
+        viewController.navigationController?.navigationBar.scrollEdgeAppearance =
+                                                viewController.navigationController?.navigationBar.standardAppearance
         
-        return viewController
+        return navigationVC
     }
 }
