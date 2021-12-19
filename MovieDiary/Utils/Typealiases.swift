@@ -12,5 +12,8 @@ typealias Path = EndpointHelper.Paths
 
 typealias MovieDetailRequestBlock = (MovieDetailDataRequest) -> Void
 typealias MovieListViewStateBlock = (MovieListViewState) -> Void
+
+// Search Blocks
 typealias SearchTextChangeBlock = (String?) -> Void
 typealias SearchButtonViewStateBlock = (Bool) -> Void
+typealias SearchViewStateBlock = (SearchViewState) -> Void

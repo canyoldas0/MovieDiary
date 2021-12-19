@@ -19,7 +19,7 @@ class SearchViewBuilder {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = AppTheme.smooth.value
-        viewController.navigationController?.navigationBar.prefersLargeTitles = true
+        viewController.navigationController?.navigationBar.prefersLargeTitles = false
         viewController.navigationController?.navigationBar.standardAppearance = appearance
         viewController.navigationController?.navigationBar.scrollEdgeAppearance =
                                                 viewController.navigationController?.navigationBar.standardAppearance

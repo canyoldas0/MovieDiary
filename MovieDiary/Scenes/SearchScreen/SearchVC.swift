@@ -11,23 +11,41 @@ import BaseModules
 class SearchViewController: BaseViewController<SearchViewModel> {
     
     private let searchBar = UISearchBar()
+    private var searchView: SearchView!
     
     override func prepareViewControllerSetup() {
         super.prepareViewControllerSetup()
         setupVC()
+        view.backgroundColor = AppTheme.bright.value
     }
     
     private func setupVC() {
         addSearchButton()
+        addSearchView()
         subscribeViewModel()
-        view.backgroundColor = AppTheme.bright.value
+        
+    }
+    
+    private func addSearchView() {
+        searchView = SearchView()
+        searchView.translatesAutoresizingMaskIntoConstraints = false
+        searchView.delegate = viewModel
+        
+        view.addSubview(searchView)
+        
+        NSLayoutConstraint.activate([
+        
+            searchView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            searchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     // MARK: - SearchBar Methods
     private func addSearchButton() {
         searchBar.sizeToFit()
         navigationItem.title = "Search"
-        navigationController?.navigationBar.prefersLargeTitles = false
         searchBar.delegate = viewModel
         searchBar.scopeButtonTitles = ["Movies", "Apps", "Books", "Music"]
         searchBar.showsScopeBar = true
