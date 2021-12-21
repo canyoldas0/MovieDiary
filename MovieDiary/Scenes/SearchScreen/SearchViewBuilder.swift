@@ -11,7 +11,8 @@ class SearchViewBuilder {
     
     class func build() -> UIViewController {
         
-        let viewModel = SearchViewModel()
+        let dataFormatter = SearchDataFormatter()
+        let viewModel = SearchViewModel(dataFormatter: dataFormatter)
         let viewController = SearchViewController(viewModel: viewModel)
         viewController.title = "Search"
         viewController.tabBarItem.image = TabBarImages.search.value

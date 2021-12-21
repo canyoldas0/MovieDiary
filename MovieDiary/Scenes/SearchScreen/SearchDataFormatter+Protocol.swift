@@ -10,24 +10,46 @@ import BaseModules
 
 protocol SearchDataFormatterProtocol {
     
-//    func setData(with response: MovieListDataResponse)
+    var paginationData: PaginationInfo { get set }
+    
+    func setData(with response: MovieListDataResponse)
+    func clearList()
     func getItem(at index: Int) -> GenericDataProtocol?
     func getCount() -> Int
     func getNumberOfSection() -> Int
     func getNumberOfItem(in section: Int) -> Int
+    func getTitle(at index: Int) -> String
     func getImageUrl(at index: Int) -> String
+    func getScore(at index: Int) -> String
+
     func getItemId(at index: Int) -> Int
     
 }
 
 class SearchDataFormatter: SearchDataFormatterProtocol {
     
+    private var list: [MovieResult] = [MovieResult]()
+    var paginationData: PaginationInfo = PaginationInfo()
+    
+    func setData(with response: MovieListDataResponse) {
+        self.paginationData.resultCount = response.results.count
+        self.list.append(contentsOf: response.results)
+    }
+    
+    func clearList() {
+        self.list = []
+        self.paginationData.reset()
+    }
+    
     func getItem(at index: Int) -> GenericDataProtocol? {
-        return nil
+        return SearchViewData(imageData: CustomImageViewComponentData(imageUrl: getImageUrl(at: index)),
+                              movieName: getTitle(at: index),
+                              categories: "",
+                              score: getScore(at: index))
     }
     
     func getCount() -> Int {
-        return 1
+        return list.count
     }
     
     func getNumberOfSection() -> Int {
@@ -35,15 +57,23 @@ class SearchDataFormatter: SearchDataFormatterProtocol {
     }
     
     func getNumberOfItem(in section: Int) -> Int {
-        return 1
+        return list.count
+    }
+    
+    func getTitle(at index: Int) -> String {
+        return list[index].title ?? ""
     }
     
     func getImageUrl(at index: Int) -> String {
-        return "1"
+        return list[index].backdropURL
+    }
+    
+    func getScore(at index: Int) -> String {
+        
+        return "\(list[index].voteAverage ?? 0)/10"
     }
     
     func getItemId(at index: Int) -> Int {
-        return 1
+        return list[index].id ?? 0
     }
 }
-

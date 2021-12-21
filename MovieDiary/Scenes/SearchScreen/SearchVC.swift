@@ -83,6 +83,19 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         viewModel.subscribeSearchBarState { [weak self] state in
             self?.search(shouldShow: state)
         }
+        
+        viewModel.subscribeState { [weak self] state in
+            
+            switch state {
+                
+            case .done:
+                self?.searchView.reloadTableView()
+            case .failure:
+                return
+            case .loading:
+                return
+            }
+        }
     }
 
 }

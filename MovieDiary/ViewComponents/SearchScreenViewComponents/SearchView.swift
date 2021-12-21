@@ -51,11 +51,17 @@ class SearchView: GenericBaseView<SearchViewData> {
 
 extension SearchView: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return delegate?.askNumberOfItem(in: section) ?? 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {        return delegate?.askNumberOfItem(in: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let data = delegate?.askData(at: indexPath.row) else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell  else {
+            fatalError("Please provide  registered cell items")
+            
+        }
+        
+        cell.setData(by: data)
+        return cell
     }
 }

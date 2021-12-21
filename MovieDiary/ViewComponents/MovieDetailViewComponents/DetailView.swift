@@ -52,7 +52,7 @@ class DetailView: GenericBaseView<DetailViewData> {
         return temp
     }()
     
-    lazy var rateLabel: UILabel = {
+    private lazy var rateLabel: UILabel = {
         let temp = UILabel()
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.text = " "

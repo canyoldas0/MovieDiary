@@ -25,11 +25,14 @@ enum EndpointHelper {
                 return "movie/popular"
             case .detail(let id):
                 return "movie/\(id)"
+            case .searchMovie:
+                return "search/movie"
             }
         }
         
         case popularMovies
         case detail(Int)
+        case searchMovie
 
     }
    
