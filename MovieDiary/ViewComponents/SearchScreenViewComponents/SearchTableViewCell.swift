@@ -37,7 +37,7 @@ class SearchTableViewCell: BaseTableViewCell {
         temp.numberOfLines = 0
         temp.font = MainFont.medium(14).value
         temp.lineBreakMode = .byWordWrapping
-        temp.text = " "
+        temp.text = "Categories "
         return temp
     }()
     
@@ -52,8 +52,8 @@ class SearchTableViewCell: BaseTableViewCell {
         let temp = UIStackView(arrangedSubviews: [titleLabel, categoryLabel, rateLabel])
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.axis = .vertical
-        temp.distribution = .equalSpacing
-        temp.spacing = 10
+        temp.distribution = .fillEqually
+        temp.spacing = 5
         temp.alignment = .leading
         return temp
     }()
@@ -69,9 +69,9 @@ class SearchTableViewCell: BaseTableViewCell {
         
         NSLayoutConstraint.activate([
         
-            imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            imageContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            imageContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             
             titleStackView.leadingAnchor.constraint(equalTo: imageContainer.trailingAnchor, constant: 10),
             titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

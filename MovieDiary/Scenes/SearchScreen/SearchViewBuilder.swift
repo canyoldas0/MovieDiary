@@ -14,7 +14,7 @@ class SearchViewBuilder {
         let dataFormatter = SearchDataFormatter()
         let viewModel = SearchViewModel(dataFormatter: dataFormatter)
         let viewController = SearchViewController(viewModel: viewModel)
-        viewController.title = "Search"
+        viewController.title = "Search Movie"
         viewController.tabBarItem.image = TabBarImages.search.value
         let navigationVC = UINavigationController(rootViewController: viewController)
         let appearance = UINavigationBarAppearance()

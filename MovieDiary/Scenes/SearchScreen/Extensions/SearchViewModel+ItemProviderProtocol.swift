@@ -22,6 +22,10 @@ extension SearchViewModel: ItemProviderProtocol {
         return dataFormatter.getItem(at: index)
     }
     
+    func selectedItem(at index: Int) {
+        detailViewState?(MovieDetailDataRequest(movie_id: dataFormatter.getItemId(at: index)))
+    }
+    
     func getMoreData() {
         guard dataFormatter.paginationData.checkLoadingMore() else { return }
         dataFormatter.paginationData.nextOffset()

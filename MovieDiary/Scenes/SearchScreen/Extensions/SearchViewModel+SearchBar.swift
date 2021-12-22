@@ -15,14 +15,7 @@ extension SearchViewModel: UISearchBarDelegate {
         self.dataFormatter.clearList()
         self.getData()
         }
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        viewModel.clearOffset()
-//        let entity = viewModel.selectedScopeToPathConverter(scope: selectedScope)
-//          viewModel.entity = entity
-            self.getData()
-    }
-    
+        
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.getData()
     }

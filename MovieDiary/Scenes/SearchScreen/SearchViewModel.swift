@@ -12,7 +12,9 @@ class SearchViewModel: NSObject {
     var searchTerm: String = ""
     var dataFormatter: SearchDataFormatterProtocol
     var searchBarViewState: SearchButtonViewStateBlock?
+    var detailViewState: MovieDetailRequestBlock?
     private var state: SearchViewStateBlock?
+    
     
     init(dataFormatter: SearchDataFormatterProtocol) {
         self.dataFormatter = dataFormatter
@@ -25,6 +27,10 @@ class SearchViewModel: NSObject {
     
     func subscribeState(completion: @escaping SearchViewStateBlock) {
         state = completion
+    }
+    
+    func subscribeDetailViewState(completion: @escaping MovieDetailRequestBlock) {
+        detailViewState = completion
     }
     
     func getData() {

@@ -60,8 +60,19 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
             fatalError("Please provide  registered cell items")
             
         }
-        
+        cell.selectionStyle = .none
         cell.setData(by: data)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.startTappedAnimation(with: { [weak self] finish in
+            if finish {
+                self?.delegate?.selectedItem(at: indexPath.row)
+                cell?.isUserInteractionEnabled = true
+            }
+        })
+
     }
 }

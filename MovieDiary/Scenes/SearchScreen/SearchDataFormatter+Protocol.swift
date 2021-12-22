@@ -65,7 +65,7 @@ class SearchDataFormatter: SearchDataFormatterProtocol {
     }
     
     func getImageUrl(at index: Int) -> String {
-        return list[index].backdropURL
+        return list[index].posterURL
     }
     
     func getScore(at index: Int) -> String {

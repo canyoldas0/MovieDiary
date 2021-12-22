@@ -45,10 +45,8 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     // MARK: - SearchBar Methods
     private func addSearchButton() {
         searchBar.sizeToFit()
-        navigationItem.title = "Search"
         searchBar.delegate = viewModel
-        searchBar.scopeButtonTitles = ["Movies", "Apps", "Books", "Music"]
-        searchBar.showsScopeBar = true
+        searchBar.showsScopeBar = false
         searchBar.barTintColor = AppTheme.bright.value
         showSearchBarButton(shouldShow: true)
         searchBar.tintColor = .black
@@ -96,6 +94,17 @@ class SearchViewController: BaseViewController<SearchViewModel> {
                 return
             }
         }
+        
+        viewModel.subscribeDetailViewState { request in
+            self.fireDetailView(with: request)
+        }
+    }
+    
+    private func fireDetailView(with data: MovieDetailDataRequest) {
+        
+        let viewController = MovieDetailViewBuilder.build(with: data)
+        self.navigationController?.present(viewController, animated: true, completion: nil)
+        
     }
 
 }
