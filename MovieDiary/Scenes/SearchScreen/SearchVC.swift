@@ -16,7 +16,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     override func prepareViewControllerSetup() {
         super.prepareViewControllerSetup()
         setupVC()
-        view.backgroundColor = AppTheme.bright.value
+    
     }
     
     private func setupVC() {

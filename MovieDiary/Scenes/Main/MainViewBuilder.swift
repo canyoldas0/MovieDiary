@@ -15,6 +15,8 @@ class MainViewBuilder {
         let viewModel = MainViewModel(dataFormatter: dataFormatter)
         let viewController = MainViewController(viewModel: viewModel)
         let navigationVC = UINavigationController(rootViewController: viewController)
+        navigationVC.navigationBar.backgroundColor = AppTheme.smooth.value
+        viewController.view.backgroundColor = AppTheme.smooth.value
         viewController.title = "Popular Movies"
         viewController.tabBarItem.image = TabBarImages.home.value
         viewController.tabBarItem.selectedImage = TabBarImages.homeSelected.value

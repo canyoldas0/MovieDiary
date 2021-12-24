@@ -17,6 +17,8 @@ class SearchViewBuilder {
         viewController.title = "Search Movie"
         viewController.tabBarItem.image = TabBarImages.search.value
         let navigationVC = UINavigationController(rootViewController: viewController)
+        navigationVC.navigationBar.backgroundColor = AppTheme.smooth.value
+        viewController.view.backgroundColor = AppTheme.smooth.value
    
         return navigationVC
     }
