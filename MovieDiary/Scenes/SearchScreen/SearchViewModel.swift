@@ -13,8 +13,8 @@ class SearchViewModel: NSObject {
     var dataFormatter: SearchDataFormatterProtocol
     var searchBarViewState: SearchButtonViewStateBlock?
     var detailViewState: MovieDetailRequestBlock?
-    private var state: SearchViewStateBlock?
-    
+    var searchWorkItem: DispatchWorkItem?
+    var state: SearchViewStateBlock?
     
     init(dataFormatter: SearchDataFormatterProtocol) {
         self.dataFormatter = dataFormatter

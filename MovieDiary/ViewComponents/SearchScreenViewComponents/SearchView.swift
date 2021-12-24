@@ -21,6 +21,7 @@ class SearchView: GenericBaseView<SearchViewData> {
         temp.estimatedRowHeight = UITableView.automaticDimension
         temp.rowHeight = UITableView.automaticDimension
         temp.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
+        temp.register(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.identifier)
         return temp
     }()
     
@@ -47,6 +48,11 @@ class SearchView: GenericBaseView<SearchViewData> {
             self.tableView.reloadData()
         }
     }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return delegate?.isLoadingCell(for: indexPath.row) ?? false
+    }
+    
 }
 
 extension SearchView: UITableViewDelegate, UITableViewDataSource {
@@ -63,6 +69,12 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.setData(by: data)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if isLoadingCell(for: indexPath) {
+            delegate?.getMoreData()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

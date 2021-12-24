@@ -23,33 +23,16 @@ class SearchTableViewCell: BaseTableViewCell {
     private lazy var titleLabel: UILabel = {
         let temp = UILabel()
         temp.textAlignment = .left
-        temp.text = "Red Notice (2021)"
+        temp.text = " "
         temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.font = MainFont.bold(16).value
+        temp.font = MainFont.bold(15).value
         temp.numberOfLines = 0
         temp.lineBreakMode = .byWordWrapping
-        return temp
-    }()
-    
-    private var categoryLabel: UILabel = {
-        let temp = UILabel()
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.numberOfLines = 0
-        temp.font = MainFont.medium(14).value
-        temp.lineBreakMode = .byWordWrapping
-        temp.text = "Categories "
-        return temp
-    }()
-    
-    private lazy var rateLabel: UILabel = {
-        let temp = UILabel()
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.text = "6/10"
         return temp
     }()
     
     private lazy var titleStackView: UIStackView = {
-        let temp = UIStackView(arrangedSubviews: [titleLabel, categoryLabel, rateLabel])
+        let temp = UIStackView(arrangedSubviews: [titleLabel])
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.axis = .vertical
         temp.distribution = .fillEqually
@@ -83,8 +66,7 @@ class SearchTableViewCell: BaseTableViewCell {
     
     func setData(by value: GenericDataProtocol) {
         guard let data = value as? SearchViewData else { return }
-        titleLabel.text = data.movieName
-        rateLabel.text = data.score
+        titleLabel.text = "\(data.movieName) \(data.releaseDate)"
         imageContainer.setData(data: data.imageData)
     }
 }

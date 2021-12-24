@@ -19,12 +19,6 @@ class MainViewBuilder {
         viewController.tabBarItem.image = TabBarImages.home.value
         viewController.tabBarItem.selectedImage = TabBarImages.homeSelected.value
         
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = AppTheme.smooth.value
-        viewController.navigationController?.navigationBar.standardAppearance = appearance
-        viewController.navigationController?.navigationBar.scrollEdgeAppearance =
-                                                viewController.navigationController?.navigationBar.standardAppearance
         return navigationVC
     }
 }

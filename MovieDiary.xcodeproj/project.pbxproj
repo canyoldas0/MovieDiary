@@ -80,6 +80,7 @@
 		1EC301C7275E9D43008C4EB6 /* MainFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC301C6275E9D43008C4EB6 /* MainFont.swift */; };
 		1EC301C9275EA14A008C4EB6 /* MovieDetailViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC301C8275EA14A008C4EB6 /* MovieDetailViewState.swift */; };
 		1EC301CC275EA2BA008C4EB6 /* MovieDetailVM+ItemProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC301CB275EA2BA008C4EB6 /* MovieDetailVM+ItemProviderProtocol.swift */; };
+		1ECD81C82776484800134797 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD81C72776484800134797 /* LoadingTableViewCell.swift */; };
 		1EE5B72F2769EBD800A54EA8 /* TabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE5B72E2769EBD800A54EA8 /* TabBarImages.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,7 @@
 		1EC301C6275E9D43008C4EB6 /* MainFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFont.swift; sourceTree = "<group>"; };
 		1EC301C8275EA14A008C4EB6 /* MovieDetailViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewState.swift; sourceTree = "<group>"; };
 		1EC301CB275EA2BA008C4EB6 /* MovieDetailVM+ItemProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailVM+ItemProviderProtocol.swift"; sourceTree = "<group>"; };
+		1ECD81C72776484800134797 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		1EE5B72E2769EBD800A54EA8 /* TabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -458,6 +460,7 @@
 				1EA1B455276FBEF8003F1AE4 /* SearchView.swift */,
 				1EA1B457276FBF3E003F1AE4 /* SearchViewData.swift */,
 				1EA1B459276FC173003F1AE4 /* SearchTableViewCell.swift */,
+				1ECD81C72776484800134797 /* LoadingTableViewCell.swift */,
 			);
 			path = SearchScreenViewComponents;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				1E72AD222772309700827849 /* SearchMovieListProvider.swift in Sources */,
 				1E5702C22769320300E8CCB4 /* SearchViewBuilder.swift in Sources */,
 				1EA1B45E276FC38E003F1AE4 /* SearchDataFormatter+Protocol.swift in Sources */,
+				1ECD81C82776484800134797 /* LoadingTableViewCell.swift in Sources */,
 				1E3CBE26275A43CF00656585 /* HTTPHeaders.swift in Sources */,
 				1E5702BB276930DB00E8CCB4 /* AppTheme.swift in Sources */,
 				1E72AD2027722D8800827849 /* SearchMovieDataRequest.swift in Sources */,

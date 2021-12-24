@@ -17,14 +17,7 @@ class SearchViewBuilder {
         viewController.title = "Search Movie"
         viewController.tabBarItem.image = TabBarImages.search.value
         let navigationVC = UINavigationController(rootViewController: viewController)
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = AppTheme.smooth.value
-        viewController.navigationController?.navigationBar.prefersLargeTitles = false
-        viewController.navigationController?.navigationBar.standardAppearance = appearance
-        viewController.navigationController?.navigationBar.scrollEdgeAppearance =
-                                                viewController.navigationController?.navigationBar.standardAppearance
-        
+   
         return navigationVC
     }
 }

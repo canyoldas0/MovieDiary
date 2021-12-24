@@ -13,9 +13,18 @@ extension SearchViewModel: UISearchBarDelegate {
         let text = searchText.replacingOccurrences(of: " ", with: "+")
         self.searchTerm = text
         self.dataFormatter.clearList()
-        self.getData()
-        }
         
+        if text.count > 2 {
+            searchWorkItem?.cancel()
+            let newTask = DispatchWorkItem { [weak self] in
+                self?.getData()
+                self?.state?(.done)
+            }
+            self.searchWorkItem = newTask
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: newTask)
+        }
+    }
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.getData()
     }

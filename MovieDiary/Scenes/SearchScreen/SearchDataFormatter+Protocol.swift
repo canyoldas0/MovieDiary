@@ -21,7 +21,7 @@ protocol SearchDataFormatterProtocol {
     func getTitle(at index: Int) -> String
     func getImageUrl(at index: Int) -> String
     func getScore(at index: Int) -> String
-
+    func getReleaseYear(at index: Int) -> String
     func getItemId(at index: Int) -> Int
     
 }
@@ -44,7 +44,7 @@ class SearchDataFormatter: SearchDataFormatterProtocol {
     func getItem(at index: Int) -> GenericDataProtocol? {
         return SearchViewData(imageData: CustomImageViewComponentData(imageUrl: getImageUrl(at: index)),
                               movieName: getTitle(at: index),
-                              categories: "",
+                              releaseDate: getReleaseYear(at: index),
                               score: getScore(at: index))
     }
     
@@ -71,6 +71,23 @@ class SearchDataFormatter: SearchDataFormatterProtocol {
     func getScore(at index: Int) -> String {
         
         return "\(list[index].voteAverage ?? 0)/10"
+    }
+    
+    func getReleaseYear(at index: Int) -> String {
+        let dateFormatter = DateFormatter()
+        let dateString = list[index].releaseDate
+        
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let date = dateFormatter.date(from: dateString ?? "") else { return ""}
+        
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
+        let finalDateString = dateFormatter.string(from: date)
+        
+        return "(\(finalDateString))"
+        
     }
     
     func getItemId(at index: Int) -> Int {

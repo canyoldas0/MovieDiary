@@ -12,17 +12,17 @@ class SearchViewData: GenericDataProtocol {
     
     private(set) var imageData: CustomImageViewComponentData
     private(set) var movieName: String
-    private(set) var categories: String
+    private(set) var releaseDate: String
     private(set) var score: String
     
     init(imageData: CustomImageViewComponentData,
          movieName: String,
-         categories: String,
+         releaseDate: String,
          score: String
     ) {
         self.imageData = imageData
         self.movieName = movieName
-        self.categories = categories
+        self.releaseDate = releaseDate
         self.score = score
     }
 }

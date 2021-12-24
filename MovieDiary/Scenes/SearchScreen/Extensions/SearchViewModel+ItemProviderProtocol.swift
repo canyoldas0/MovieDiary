@@ -26,6 +26,10 @@ extension SearchViewModel: ItemProviderProtocol {
         detailViewState?(MovieDetailDataRequest(movie_id: dataFormatter.getItemId(at: index)))
     }
     
+    func isLoadingCell(for index: Int) -> Bool {
+        return index + 1 >= dataFormatter.getCount()
+    }
+    
     func getMoreData() {
         guard dataFormatter.paginationData.checkLoadingMore() else { return }
         dataFormatter.paginationData.nextOffset()
